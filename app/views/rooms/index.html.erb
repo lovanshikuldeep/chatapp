@@ -6,10 +6,16 @@
       <h5> Hi <%= @current_user.email %> </h5>
       <h4> Users </h4>
       <% @users.each do |user| %> 
+
         <% if user != current_user%>
          <%= turbo_stream_from "users" %>
         <div id="users">
-          <%= user.email %>
+
+          <li>
+      <a href="/users/<%= user.id %>">
+        <%= user.email %>
+      </a>
+    </li>
           </div>
         <%end%>
       <% end %>
